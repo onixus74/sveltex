@@ -1,6 +1,11 @@
 const context = require.context("../../../assets/js/svelte", false, /\.svelte/);
-window.onload = function() {
-  context.keys().forEach(file => {
+
+window.onload = function () {
+  reloadSvelte();
+};
+
+export function reloadSvelte() {
+  context.keys().forEach((file) => {
     const componentName = file.replace(/\.\/|\.svelte/g, "");
     const targetId = `sveltex-${componentName}`;
 
@@ -20,7 +25,7 @@ window.onload = function() {
 
     new requiredApp.default({
       target: root,
-      props: parsedProps
+      props: parsedProps,
     });
   });
-};
+}
