@@ -9,6 +9,7 @@ defmodule Sveltex do
   """
   def render(name, props) do
     Phoenix.HTML.Tag.tag(:div,
+      phx_update: "ignore",
       data: [props: payload(props)],
       id: "sveltex-#{String.replace(name, " ", "-")}"
     )
